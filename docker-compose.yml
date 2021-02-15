@@ -8,8 +8,9 @@ services:
     tty: true
     volumes:
       - "./testproject:/opt/testproject"
+      - "./nginx.conf:/etc/nginx/sites-enabled/django.conf"
     ports:
       - "8000:8000"
+      - "58080:58080"
     # 0.0.0.0:8000 を書かないと docker の外からアクセスできない
-    command: ["bash", "-c", "./manage.py runserver 0.0.0.0:8000"]
-    # command: ["bash", "-c", "gunicorn -w 1 -b 0.0.0.0:8000 testproject.wsgi:application"]
+    command: ["bash", "-c", "service nginx start && gunicorn testproject.wsgi --bind=unix:/var/run/gunicorn.sock"]

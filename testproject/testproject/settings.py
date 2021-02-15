@@ -25,7 +25,9 @@ SECRET_KEY = '_-jdr+_$ivos$jdf$-hl(vhl2!d5=$h^jyg!f+_s0)*b2#r0wd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'testproject-gunicorn',
+]
 
 
 # Application definition
